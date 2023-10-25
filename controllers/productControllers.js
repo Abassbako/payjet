@@ -7,8 +7,6 @@ const createProduct = async (req, res) => {
 
       const saveProduct = await product.save();
 
-      createToken(product._id);
-
       res.status(201).json(saveProduct);
     } catch (e) {
         console.error(new Error(e));

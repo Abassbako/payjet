@@ -2,6 +2,7 @@ const userRoutes = require('./routers/userRoutes');
 const productRoutes = require('./routers/productRoutes');
 const cartRoutes = require('./routers/cartRoutes');
 const orderRoutes = require('./routers/orderRoutes');
+const paymentRoutes = require('./routers/paymentRoutes');
 
 const express = require('express');
 const mongoose = require('mongoose');
@@ -25,16 +26,13 @@ app.use('/api/v1/users', userRoutes);
 app.use('/api/v1/products', productRoutes);
 app.use('/api/v1/carts', cartRoutes);
 app.use('/api/v1/orders', orderRoutes);
+app.use('/api/v1/payments', paymentRoutes);
 
 const PORT = process.env.PORT || 3000;
 const uri = process.env.MONGO_URL;
 
 app.listen(PORT, () => {
     console.log(`app listening on port ${ PORT }`);
-});
-
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname+ '/public/index.html'));
 });
 
 mongoose.connect(uri, { useNewUrlParser: true })
